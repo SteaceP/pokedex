@@ -1,4 +1,3 @@
-import React from "react";
 import { upperCaseFirst } from "utils";
 import {
   Grid,
