@@ -19,7 +19,7 @@ export const PokemonCard = ({ pokemon, history }) => {
       <Card onClick={() => history.push(`/pokemon/${name}`)}>
         <CardMedia
           className={classes.cardMedia}
-          image={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+          image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
           style={{ width: "130px", height: "130px" }}
         />
         <CardContent className={classes.cardContent}>
