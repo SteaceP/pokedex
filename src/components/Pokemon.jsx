@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Typography, Link, CircularProgress, Button } from "@material-ui/core";
 import { upperCaseFirst } from "utils";
+import { useStyles } from "../theme/PokedexTheme";
 import axios from "axios";
 
 const Pokemon = (props) => {
@@ -8,6 +9,7 @@ const Pokemon = (props) => {
   const { params } = match;
   const { pokemonId } = params;
   const [pokemon, setPokemon] = useState(undefined);
+  const classes = useStyles();
 
   useEffect(() => {
     axios
@@ -55,14 +57,18 @@ const Pokemon = (props) => {
   };
   return (
     <>
-      {pokemon === undefined && <CircularProgress />}
-      {pokemon !== undefined && pokemon && generatePokemonJSX()}
-      {pokemon === false && <Typography>Pokemon not found</Typography>}
-      {pokemon !== undefined && (
-        <Button variant="contained" onClick={() => history.push("/")}>
-          Back to Pokedex
-        </Button>
-      )}
+      <div className={classes.progress}>
+        {pokemon === undefined && <CircularProgress />}
+      </div>
+      <div className={classes.pokeInfo}>
+        {pokemon !== undefined && pokemon && generatePokemonJSX()}
+        {pokemon === false && <Typography>Pokemon not found</Typography>}
+        {pokemon !== undefined && (
+          <Button variant="contained" onClick={() => history.push("/")}>
+            Back to Pokedex
+          </Button>
+        )}
+      </div>
     </>
   );
 };

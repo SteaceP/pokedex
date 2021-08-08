@@ -24,11 +24,11 @@ const Pokedex = ({ match, history }) => {
         const { count, results } = response.data;
 
         setNumberOfItems(count);
-        setPokemons(results);
+        setPokemons(results); // "cache" the response to remove some load for the API (requested by the devs and a good idea to keep it free)
       });
   };
 
-  const handlePaginationChange = (event, page) => {
+  const handlePaginationChange = (_event, page) => {
     getPokemonPage(page);
     history.push(`/${page}`);
   };
